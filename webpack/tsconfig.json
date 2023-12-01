@@ -2,10 +2,28 @@
   "compilerOptions": {
     "outDir": "./build",
     "noImplicitAny": true,
-    "module": "es6",
+    "module": "ESNext",
     "target": "ES5",
     "jsx": "react",
     "allowJs": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    // esModuleInterop позволяет работать с пакетами, которые используют common js как с обычными пакетами
+    // с помощью import (require() module.export)   = common js
+    // import Lorem from 'lorem'
+    // без флага moduleResolution результат undefined
+    // console.log(Lorem)
+    // с флагом результат [object Object]
+    // console.log(Lorem)
+    "esModuleInterop": true,
+    // Если какая-либо библиотека не имеет default import, лоадеры вроде ts-loader или babel-loader
+    // автоматически создают их вместо такого импорта import * as React from 'react'
+    // можно писать такой
+    // import React from 'react'
+    "allowSyntheticDefaultImports": true
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
   }
 }
