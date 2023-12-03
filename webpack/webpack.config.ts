@@ -27,6 +27,18 @@ export default (env: EnvVariables) => {
         ].filter(Boolean),
         module: {
             rules: [
+                // порядок лоадеров важен
+                {
+                    test: /\.s[ac]ss$/i,
+                    use: [
+                        // Creates `style` nodes from JS strings
+                        "style-loader",
+                        // Translates CSS into CommonJS
+                        "css-loader",
+                        // Compiles Sass to CSS
+                        "sass-loader",
+                    ],
+                },
                 {
                     // ts-loader умеет работать с JSX
                     // Если бы мы не юзали ТС: нужен был бы babel-loader
