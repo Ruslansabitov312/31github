@@ -5,12 +5,36 @@ import flagKgz from '@/assets/kgz.png'
 import bishkek from '@/assets/Bishkek.jpg'
 import SvgLogo from '@/assets/svglogo.svg'
 
+// TREE SHAKING - функция, до тех пор пока она была не использована она в итоговый бандл не попадала.
+// Как только мы заиспользовали внутри кода, webpack понял и включил в главный бандл
+function TODO() {
+    console.log('TODOFUNCTION')
+}
+
 export const App = () => {
     const [count, setCount] = useState(0);
 
     const increment = () => setCount(prev => prev + 1);
+
+    // TREE SHAKING
+    // TODO()
+
+    if(__PLATFORM__ === 'desktop') {
+        return <div>ISDESKTOPPLATFORM</div>
+    }
+
+    if(__PLATFORM__ === 'mobile') {
+        return <div>ISMOBILEPLATFORM</div>
+    }
+
+    if(__ENV__) {
+        // addDevtools() from example
+    }
+
+
     return (
         <div>
+            <h1>PLATFORM={__PLATFORM__}</h1>
             <div className={cls.ImgWrapper}>
                 <img width={350} height={200} src={flagKgz} alt="flag" />
                 <img width={350} height={200} src={bishkek} alt="bishkek" />
