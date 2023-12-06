@@ -16,20 +16,20 @@ export const App = () => {
 
     const increment = () => setCount(prev => prev + 1);
 
-    // TREE SHAKING
-    TODO(1234)
-
-    if(__PLATFORM__ === 'desktop') {
-        return <div>ISDESKTOPPLATFORM</div>
-    }
-
-    if(__PLATFORM__ === 'mobile') {
-        return <div>ISMOBILEPLATFORM</div>
-    }
-
-    if(__ENV__) {
-        // addDevtools() from example
-    }
+    // // TREE SHAKING
+    // TODO(1234)
+    //
+    // if(__PLATFORM__ === 'desktop') {
+    //     return <div>ISDESKTOPPLATFORM</div>
+    // }
+    //
+    // if(__PLATFORM__ === 'mobile') {
+    //     return <div>ISMOBILEPLATFORM</div>
+    // }
+    //
+    // if(__ENV__) {
+    //     // addDevtools() from example
+    // }
 
 
     return (
