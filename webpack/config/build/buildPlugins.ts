@@ -1,9 +1,9 @@
-import webpack, {Configuration} from 'webpack';
+import webpack, {Configuration, DefinePlugin} from 'webpack';
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import {BuildOptions} from "./types/types";
 import {BundleAnalyzerPlugin} from "webpack-bundle-analyzer";
-import { DefinePlugin } from 'webpack';
+import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 
 export function buildPlugins({mode, paths, analyzer, platform}: BuildOptions): Configuration['plugins'] {
     const isDev = mode === 'development';
@@ -20,6 +20,8 @@ export function buildPlugins({mode, paths, analyzer, platform}: BuildOptions): C
     // Dev Plugins
     if(isDev) {
         plugins.push(new webpack.ProgressPlugin())
+        // Выносит проверку типов в отдельный процесс: не нагружая сборку
+        plugins.push(new ForkTsCheckerWebpackPlugin())
     }
 
     // Prod Plugins

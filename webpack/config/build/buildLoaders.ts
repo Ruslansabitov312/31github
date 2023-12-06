@@ -53,13 +53,22 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
             ],
         }
 
-        const tsLoader = {
-                // ts-loader умеет работать с JSX
-                // Если бы мы не юзали ТС: нужен был бы babel-loader
-                test: /\.tsx?$/,
-                use: 'ts-loader',
-                exclude: /node_modules/,
+    const tsLoader = {
+        // ts-loader умеет работать с JSX
+        // Если бы мы не юзали ТС: нужен был бы babel-loader
+        exclude: '/node_modules/',
+        test: /\.tsx?$/,
+        use: [
+            {
+                loader: 'ts-loader',
+                options: {
+                    transpileOnly: true
+                }
             }
+        ]
+    }
+
+
 
     return [
         assetLoader,

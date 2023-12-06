@@ -7,7 +7,7 @@ import SvgLogo from '@/assets/svglogo.svg'
 
 // TREE SHAKING - функция, до тех пор пока она была не использована она в итоговый бандл не попадала.
 // Как только мы заиспользовали внутри кода, webpack понял и включил в главный бандл
-function TODO() {
+function TODO(a: number) {
     console.log('TODOFUNCTION')
 }
 
@@ -17,7 +17,7 @@ export const App = () => {
     const increment = () => setCount(prev => prev + 1);
 
     // TREE SHAKING
-    // TODO()
+    TODO(1234)
 
     if(__PLATFORM__ === 'desktop') {
         return <div>ISDESKTOPPLATFORM</div>
