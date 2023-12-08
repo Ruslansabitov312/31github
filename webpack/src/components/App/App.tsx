@@ -33,7 +33,7 @@ export const App = () => {
 
 
     return (
-        <div>
+        <div data-testid={'app-wrapper'}>
             <h1>PLATFORM={__PLATFORM__}</h1>
             <div className={cls.ImgWrapper}>
                 <img width={350} height={200} src={flagKgz} alt="flag" />
