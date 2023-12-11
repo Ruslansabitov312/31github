@@ -4,6 +4,7 @@ const Shop = () => {
     return (
         <div>
             SHOP
+            <div>123</div>
         </div>
     );
 };

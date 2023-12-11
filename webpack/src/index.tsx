@@ -19,11 +19,11 @@ const router = createBrowserRouter([
         element: <App />,
         children: [
             {
-                path: '/about',
+                path: '/About',
                 element: <Suspense fallback={'Loading...'}><About /></Suspense>
             },
             {
-                path: '/shop',
+                path: '/Shop',
                 element: <Suspense fallback={'Loading...'}><Shop /></Suspense>
             }
         ]

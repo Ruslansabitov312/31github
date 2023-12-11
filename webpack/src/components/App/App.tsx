@@ -47,8 +47,8 @@ export const App = () => {
                 <SvgLogo width={350} height={200} fill={'red'} style={{color: 'yellow'}} />
             </div>
             <div className={cls.Navbar}>
-                <Link to={'/about'}>About</Link>
-                <Link to={'/shop'}>Shop</Link>
+                <Link to={'/About'}>About</Link>
+                <Link to={'/Shop'}>Shop</Link>
             </div>
             <h1 className={cls.Value}>{count}</h1>
             <button className={cls.Button} onClick={increment}>click</button>
