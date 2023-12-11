@@ -2,6 +2,7 @@ import {createBrowserRouter} from "react-router-dom";
 import {App} from "@/components/App/App";
 import {Suspense} from "react";
 import {Shop} from "@/pages/Shop";
+import {UserCard} from "@packages/shared/src/components/UserCard";
 
 const routes = [
     {
@@ -14,7 +15,12 @@ const routes = [
             },
             {
                 path: '/shop/second',
-                element: <Suspense fallback={'Loading...'}><div style={{ color: 'red'}}>Second</div></Suspense>
+                element: <Suspense fallback={'Loading...'}>
+                    <div style={{ color: 'red'}}>
+                        <h1>Second Page</h1>
+                        <UserCard username={'FROM SHOP'} />
+                    </div>
+                </Suspense>
             }
         ]
     },
