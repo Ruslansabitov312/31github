@@ -1,8 +1,14 @@
 {
-  "name": "monorepo-module-federation",
-  "version": "1.0.0",
-  "workspaces": [
-    "packages/*",
-    "services/*"
-  ]
+    "name": "monorepo-module-federation",
+    "version": "1.0.0",
+    "scripts": {
+        "format": "prettier --write 'packages/**/*.{js,ts,jsx,tsx}' 'services/**/*.{js,ts,jsx,tsx}'"
+    },
+    "workspaces": [
+        "packages/*",
+        "services/*"
+    ],
+    "devDependencies": {
+        "prettier": "3.1.1"
+    }
 }

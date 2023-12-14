@@ -1,7 +1,7 @@
 import { ModuleOptions } from 'webpack';
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import ReactRefreshTypeScript from "react-refresh-typescript";
-import { BuildOptions } from "./types/types";
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import ReactRefreshTypeScript from 'react-refresh-typescript';
+import { BuildOptions } from './types/types';
 // import {buildBabelLoader} from "./babel/buildBabelLoader";
 
 export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
@@ -9,8 +9,8 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
 
     const assetLoader = {
         test: /\.(png|jpg|jpeg|gif)$/i,
-        type: 'asset/resource'
-    }
+        type: 'asset/resource',
+    };
 
     const svgrLoader = {
         test: /\.svg$/i,
@@ -25,35 +25,37 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
                                 name: 'convertColors',
                                 params: {
                                     currentColor: true,
-                                }
-                            }
-                        ]
-                    }
-                }
-            }
+                                },
+                            },
+                        ],
+                    },
+                },
+            },
         ],
-    }
+    };
 
     const cssLoaderWithModules = {
         loader: 'css-loader',
         options: {
             modules: {
-                localIdentName: isDev ? '[path][name]__[local]' : '[hash:base64:8]'
+                localIdentName: isDev
+                    ? '[path][name]__[local]'
+                    : '[hash:base64:8]',
             },
-        }
-    }
+        },
+    };
 
     const scssLoader = {
-            test: /\.s[ac]ss$/i,
-            use: [
-                // Creates `style` nodes from JS strings
-                isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
-                // Translates CSS into CommonJS
-                cssLoaderWithModules,
-                // Compiles Sass to CSS
-                "sass-loader",
-            ],
-        }
+        test: /\.s[ac]ss$/i,
+        use: [
+            // Creates `style` nodes from JS strings
+            isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+            // Translates CSS into CommonJS
+            cssLoaderWithModules,
+            // Compiles Sass to CSS
+            'sass-loader',
+        ],
+    };
 
     const tsLoader = {
         // ts-loader умеет работать с JSX
@@ -66,12 +68,14 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
                 options: {
                     transpileOnly: true,
                     getCustomTransformers: () => ({
-                        before: [isDev && ReactRefreshTypeScript()].filter(Boolean)
-                    })
-                }
-            }
-        ]
-    }
+                        before: [isDev && ReactRefreshTypeScript()].filter(
+                            Boolean,
+                        ),
+                    }),
+                },
+            },
+        ],
+    };
 
     // для jest(для универсальности) можно вынести в отдельный конфиг(babel.config.json & config/build/babel/buildBabelLoaders)
     // const babelLoader = buildBabelLoader(options)
@@ -82,5 +86,5 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
         tsLoader,
         // babelLoader,
         svgrLoader,
-    ]
+    ];
 }
