@@ -27,9 +27,9 @@ function factorial(n) {
 
 
 const cashFactorial = cashFunction(factorial)
-console.log(cashFactorial(5))
-console.log(cashFactorial(4))
-console.log(cashFactorial(3))
-console.log(cashFactorial(4))
-console.log(cashFactorial(5))
-console.log(cashFactorial(1))
+cashFactorial(5)
+cashFactorial(4)
+cashFactorial(3)
+cashFactorial(5)
+cashFactorial(4)
+cashFactorial(1)
